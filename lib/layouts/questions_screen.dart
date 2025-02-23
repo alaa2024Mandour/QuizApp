@@ -1,4 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:quize_app/data/questions.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../widgets/answers_btn.dart';
 
 class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen({super.key});
@@ -7,9 +10,56 @@ class QuestionsScreen extends StatefulWidget {
   State<QuestionsScreen> createState() => _QuestionsState();
 }
 
+
+
 class _QuestionsState extends State<QuestionsScreen> {
+  var currentQuestionIndex = 0;
+
+  final List<String> selectedAnswer = [];
+
+  void chooseAnswer(String answer){
+    selectedAnswer.add(answer);
+    print(selectedAnswer);
+  }
+
+  void switchQuestion(){
+    setState(() {
+      if (currentQuestionIndex < questions.length-1) {
+        currentQuestionIndex++;
+      }else{
+        Navigator.pushNamed(context, 'result');
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    final currentQuestion = questions[currentQuestionIndex];
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+             currentQuestion.question,
+            textAlign: TextAlign.center,
+            style: GoogleFonts.lato(
+              decoration: TextDecoration.none,
+              fontSize: 18,
+              color: Colors.white,
+            ),
+          ),
+          const SizedBox(height: 25,),
+
+          ...currentQuestion.getShuffledAnswers().map((e){
+            return  answerBTN(answerTxt: e, onPressed: (){
+              switchQuestion();
+              chooseAnswer(e);
+            });
+          }),
+
+        ],
+      ),
+    );
   }
 }

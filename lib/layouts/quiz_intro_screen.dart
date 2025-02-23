@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 class QuizIntroScreen extends StatelessWidget {
   const QuizIntroScreen({super.key});
 
@@ -10,11 +11,11 @@ class QuizIntroScreen extends StatelessWidget {
             spacing: 25,
             children: [
                   const Image(image: AssetImage('assets/quiz-logo.png'), width: 200,),
-                  const Text(
+                  Text(
                     'Start Learn Flutter Now !! ',
-                    style: TextStyle(
+                    style: GoogleFonts.lato(
                       color: Colors.white,
-                        decoration: TextDecoration.none,
+                      decoration: TextDecoration.none,
                       fontSize: 20
                     ),
                   ),
