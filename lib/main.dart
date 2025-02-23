@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quize_app/layouts/questions_screen.dart';
 import 'package:quize_app/layouts/quiz_intro_screen.dart';
 
 void main() {
@@ -11,9 +12,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: QuizIntroScreen()
+    return Container(
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(
+              colors: [
+                Colors.deepPurple,
+                Colors.blue
+              ])
+      ),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        initialRoute: 'IntroScreen',
+        routes:{
+          'IntroScreen' : (context) =>   const QuizIntroScreen(),
+          'questions' : (context) =>   const QuestionsScreen(),
+        }
+      ),
     );
   }
 }

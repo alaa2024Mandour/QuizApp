@@ -4,17 +4,7 @@ class QuizIntroScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: double.infinity,
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                colors: [
-                  Colors.deepPurple,
-                  Colors.blue
-                ])
-        ),
-        child: Column(
+    return  Column(
           mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             spacing: 25,
@@ -24,6 +14,7 @@ class QuizIntroScreen extends StatelessWidget {
                     'Start Learn Flutter Now !! ',
                     style: TextStyle(
                       color: Colors.white,
+                        decoration: TextDecoration.none,
                       fontSize: 20
                     ),
                   ),
@@ -32,12 +23,12 @@ class QuizIntroScreen extends StatelessWidget {
                       foregroundColor: Colors.white,
                       side: const BorderSide(color: Colors.white),
                     ),
-                    onPressed: () {  },
+                    onPressed: () {
+                      Navigator.pushNamed(context, 'questions');
+                    },
                     label: const Text("Start Now"),
                   icon: const Icon(Icons.double_arrow_rounded , color: Colors.white,)),
             ],
-          ),
-      ),
-    );
+          );
   }
 }
