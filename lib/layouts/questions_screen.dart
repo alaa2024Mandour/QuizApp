@@ -15,19 +15,25 @@ class QuestionsScreen extends StatefulWidget {
 class _QuestionsState extends State<QuestionsScreen> {
   var currentQuestionIndex = 0;
 
-  final List<String> selectedAnswer = [];
+  List<String> selectedAnswer = [];
 
   void chooseAnswer(String answer){
     selectedAnswer.add(answer);
-    print(selectedAnswer);
+
+    if (selectedAnswer.length == questions.length){
+      setState(() {
+        Navigator.pushNamed(context, 'result');
+        print(selectedAnswer);
+        selectedAnswer = [];
+        currentQuestionIndex = 0;
+      });
+    }
   }
 
   void switchQuestion(){
     setState(() {
-      if (currentQuestionIndex < questions.length-1) {
+      if (currentQuestionIndex < questions.length - 1) {
         currentQuestionIndex++;
-      }else{
-        Navigator.pushNamed(context, 'result');
       }
     });
   }
