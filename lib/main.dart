@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         routes:{
           'IntroScreen' : (context) =>   const QuizIntroScreen(),
           'questions' : (context) =>   const QuestionsScreen(),
-          'result' : (context) =>   const ResultScreen(),
+          'result' : (context) =>    ResultScreen(),
         },
       ),
     );

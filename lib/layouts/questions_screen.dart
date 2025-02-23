@@ -10,12 +10,11 @@ class QuestionsScreen extends StatefulWidget {
   State<QuestionsScreen> createState() => _QuestionsState();
 }
 
-
+List<String> selectedAnswer = [];
 
 class _QuestionsState extends State<QuestionsScreen> {
   var currentQuestionIndex = 0;
 
-  List<String> selectedAnswer = [];
 
   void chooseAnswer(String answer){
     selectedAnswer.add(answer);
@@ -24,7 +23,6 @@ class _QuestionsState extends State<QuestionsScreen> {
       setState(() {
         Navigator.pushNamed(context, 'result');
         print(selectedAnswer);
-        selectedAnswer = [];
         currentQuestionIndex = 0;
       });
     }
